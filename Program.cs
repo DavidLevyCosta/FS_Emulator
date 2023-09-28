@@ -6,12 +6,12 @@ namespace FS_Emulator
     {
         static void Main(string[] args)
         {
-            Table table = new Table(6, 5, 1);
+            Table table = new Table(7, 5, 1);
             Engine engine = new Engine();
-            string[,] canva = new string[30, 70];
+            string[,] canva = new string[30, 120];
             canva.BlankCanva();
             string[,] table_draw = table.CreateTableDraw();
-            table.PlaceInCanva(canva, table_draw, 1, 1);
+            table.PlaceInCanva(canva, table_draw, 5, 5);
 
             engine.Draw(canva);
 
