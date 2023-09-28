@@ -13,8 +13,10 @@ namespace FS_Emulator
         public static int col;
 
 
-        public static int table_x_position = 0;
-        public static int table_y_position = 0;
+        public static int table_x_start = 0;
+        public static int table_y_start = 0;
+        public static int table_x_end = 0;
+        public static int table_y_end = 0;
 
         public static (int, int, int, int)[] color_position;
         string[,] fifo_table = new string[,] { {"Processo", "Tempo UCP", "Criação", "TME", "TMP"},
@@ -117,7 +119,10 @@ namespace FS_Emulator
                             }
                         }
                         if (j != 0 && BorderPlace(j, cell_space)) table_draw[i, j] = "╦";
-                        if (j == col_pixels - 1) table_draw[i, j] = "╗";
+                        if (j == col_pixels - 1)
+                        {
+                            table_draw[i, j] = "╗";
+                        }
                     }
                     if ((i + 1) % 2 == 0)
                     {
@@ -212,7 +217,10 @@ namespace FS_Emulator
                             }
                         }
                         if (j != 0 && BorderPlace(j, cell_space)) table_draw[i, j] = "╩";
-                        if (j == col_pixels - 1) table_draw[i, j] = "╝";
+                        if (j == col_pixels - 1)
+                        {
+                            table_draw[i, j] = "╝";
+                        }
                     }
                     
                 }
@@ -233,8 +241,10 @@ namespace FS_Emulator
                 }
             }
 
-            table_x_position = x;
-            table_y_position = y;
+            table_x_start = x;
+            table_y_start = y;
+            table_x_end += line_qnt - 1 + table_x_start;
+            table_y_end += col_pixels - 1 + table_y_start;
         }
 
 
